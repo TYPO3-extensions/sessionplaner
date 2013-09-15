@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<T3locallang>
+	<meta type="array">
+		<description>language labels for sessionplaner</description>
+		<type>module</type>
+		<fileId>EXT:sessionplaner/Resources/Private/Language/locallang.xml</fileId>
+	</meta>
+	<data type="array">
+		<languageKey index="default" type="array">
+			<label index="tt_content.list_type_pi1">Session planer</label>
+			<label index="filter-tags">Tags</label>
+			<label index="filter-user">Users</label>
+			<label index="filter-user">Sessiontyp</label>
+			<label index="filter-user">Slideshare verfügbar</label>
+			<label index="filter-time">Aktuelle Zeit</label>
+			<label index="filter-headline">Sessionfilter</label>
+			<label index="filter-comment">Mit einem Doppelklick werden Einträge makiert und in einem
+					Cookie gespeichert. Filter gehen nach einem Reload verloren.</label>
+			<label index="by">von</label>
+			<label index="sessionpool">Sessionpool</label>
+			<label index="type">Type</label>
+			<label index="tags">Tags</label>
+			<label index="slideshare_download">Slideshare download</label>
+		</languageKey>
+		<languageKey index="de" type="array">
+			<label index="tt_content.list_type_pi1">Session Planer</label>
+		</languageKey>
+	</data>
+</T3locallang>

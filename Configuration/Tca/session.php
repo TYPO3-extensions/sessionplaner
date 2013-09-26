@@ -73,7 +73,9 @@ $GLOBALS['TCA']['tx_sessionplaner_domain_model_session'] = array(
 			'config' => array(
 				'type' => 'select',
 				'items' => array(
-
+					'0'=> array(
+						'0' => SP_LLL . 'notassigned',
+					),
 				),
 			),
 		),
@@ -83,7 +85,9 @@ $GLOBALS['TCA']['tx_sessionplaner_domain_model_session'] = array(
 			'config' => array(
 				'type' => 'select',
 				'items' => array(
-
+					'0'=> array(
+						'0' => SP_LLL . 'notassigned',
+					),
 				),
 			),
 		),

@@ -1,6 +1,32 @@
 <?php
+namespace SP\Sessionplaner\Domain\Model;
+use \TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
-class Tx_Sessionplaner_Domain_Model_Slot extends Tx_Extbase_DomainObject_AbstractEntity {
+/***************************************************************
+ *  Copyright notice
+ *
+ *  (c) 2013 Sebastian Fischer <typo3@evoweb.de>
+ *  All rights reserved
+ *
+ *  This script is part of the TYPO3 project. The TYPO3 project is
+ *  free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  The GNU General Public License can be found at
+ *  http://www.gnu.org/copyleft/gpl.html.
+ *
+ *  This script is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  This copyright notice MUST APPEAR in all copies of the script!
+ ***************************************************************/
+
+class Slot extends AbstractEntity {
+
 	/**
 	 * @var \DateTime
 	 */
@@ -22,55 +48,44 @@ class Tx_Sessionplaner_Domain_Model_Slot extends Tx_Extbase_DomainObject_Abstrac
 	protected $noBreakAfter = FALSE;
 
 	/**
-	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_Sessionplaner_Domain_Model_Day>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\SP\Sessionplaner\Domain\Model\Day>
 	 * @lazy
 	 */
 	protected $days;
 
 	/**
-	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_Sessionplaner_Domain_Model_Room>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\SP\Sessionplaner\Domain\Model\Room>
 	 * @lazy
 	 */
 	protected $rooms;
 
 	/**
-	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_Sessionplaner_Domain_Model_Session>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\SP\Sessionplaner\Domain\Model\Session>
 	 * @lazy
 	 */
 	protected $sessions;
 
+	/**
+	 * @return void
+	 */
 	public function __construct() {
-		$this->days = new Tx_Extbase_Persistence_ObjectStorage();
-		$this->rooms = new Tx_Extbase_Persistence_ObjectStorage();
-		$this->sessions = new Tx_Extbase_Persistence_ObjectStorage();
+		$this->days = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$this->rooms = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+		$this->sessions = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 	}
 
 	/**
-	 * @param boolean $break
+	 * @param \DateTime $start
 	 */
-	public function setBreak($break) {
-		$this->break = $break;
+	public function setStart($start) {
+		$this->start = $start;
 	}
 
 	/**
-	 * @return boolean
+	 * @return \DateTime
 	 */
-	public function getBreak() {
-		return $this->break;
-	}
-
-	/**
-	 * @param \Tx_Extbase_Persistence_ObjectStorage $days
-	 */
-	public function setDays($days) {
-		$this->days = $days;
-	}
-
-	/**
-	 * @return \Tx_Extbase_Persistence_ObjectStorage
-	 */
-	public function getDays() {
-		return $this->days;
+	public function getStart() {
+		return $this->start;
 	}
 
 	/**
@@ -88,6 +103,20 @@ class Tx_Sessionplaner_Domain_Model_Slot extends Tx_Extbase_DomainObject_Abstrac
 	}
 
 	/**
+	 * @param boolean $break
+	 */
+	public function setBreak($break) {
+		$this->break = $break;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function getBreak() {
+		return $this->break;
+	}
+
+	/**
 	 * @param boolean $noBreakAfter
 	 */
 	public function setNoBreakAfter($noBreakAfter) {
@@ -102,46 +131,47 @@ class Tx_Sessionplaner_Domain_Model_Slot extends Tx_Extbase_DomainObject_Abstrac
 	}
 
 	/**
-	 * @param \Tx_Extbase_Persistence_ObjectStorage $rooms
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $days
 	 */
-	public function setRooms($rooms) {
+	public function setDays(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $days) {
+		$this->days = $days;
+	}
+
+	/**
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+	 */
+	public function getDays() {
+		return $this->days;
+	}
+
+	/**
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $rooms
+	 */
+	public function setRooms(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $rooms) {
 		$this->rooms = $rooms;
 	}
 
 	/**
-	 * @return \Tx_Extbase_Persistence_ObjectStorage
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
 	 */
 	public function getRooms() {
 		return $this->rooms;
 	}
 
 	/**
-	 * @param \Tx_Extbase_Persistence_ObjectStorage $sessions
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $sessions
 	 */
-	public function setSessions($sessions) {
+	public function setSessions(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $sessions) {
 		$this->sessions = $sessions;
 	}
 
 	/**
-	 * @return \Tx_Extbase_Persistence_ObjectStorage
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
 	 */
 	public function getSessions() {
 		return $this->sessions;
 	}
 
-	/**
-	 * @param \DateTime $start
-	 */
-	public function setStart($start) {
-		$this->start = $start;
-	}
-
-	/**
-	 * @return \DateTime
-	 */
-	public function getStart() {
-		return $this->start;
-	}
 }
 
 ?>

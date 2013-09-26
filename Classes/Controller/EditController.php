@@ -1,4 +1,9 @@
 <?php
+namespace SP\Sessionplaner\Controller;
+use \SP\Sessionplaner\Domain\Repository\DayRepository;
+use \SP\Sessionplaner\Domain\Repository\SessionRepository;
+use \TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -25,30 +30,31 @@
 /**
  * An display controller
  */
-class Tx_Sessionplaner_Controller_EditController extends Tx_Extbase_MVC_Controller_ActionController {
+class EditController extends ActionController {
+
 	/**
-	 * @var Tx_Sessionplaner_Domain_Repository_DayRepository
+	 * @var DayRepository
 	 */
 	protected $dayRepository;
 
 	/**
-	 * @var Tx_Sessionplaner_Domain_Repository_SessionRepository
+	 * @var SessionRepository
 	 */
 	protected $sessionRepository;
 
 	/**
-	 * @param Tx_Sessionplaner_Domain_Repository_DayRepository $repository
+	 * @param DayRepository $repository
 	 * @return void
 	 */
-	public function injectDayRepository(Tx_Sessionplaner_Domain_Repository_DayRepository $repository) {
+	public function injectDayRepository(DayRepository $repository) {
 		$this->dayRepository = $repository;
 	}
 
 	/**
-	 * @param Tx_Sessionplaner_Domain_Repository_SessionRepository $repository
+	 * @param SessionRepository $repository
 	 * @return void
 	 */
-	public function injectSessionRepository(Tx_Sessionplaner_Domain_Repository_SessionRepository $repository) {
+	public function injectSessionRepository(SessionRepository $repository) {
 		$this->sessionRepository = $repository;
 	}
 
@@ -58,6 +64,7 @@ class Tx_Sessionplaner_Controller_EditController extends Tx_Extbase_MVC_Controll
 	public function showAction() {
 
 	}
+
 }
 
 ?>

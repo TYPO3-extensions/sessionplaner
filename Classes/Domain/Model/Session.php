@@ -1,10 +1,41 @@
 <?php
+namespace SP\Sessionplaner\Domain\Model;
+use \TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
-class Tx_Sessionplaner_Domain_Model_Session extends Tx_Extbase_DomainObject_AbstractEntity {
+/***************************************************************
+ *  Copyright notice
+ *
+ *  (c) 2013 Sebastian Fischer <typo3@evoweb.de>
+ *  All rights reserved
+ *
+ *  This script is part of the TYPO3 project. The TYPO3 project is
+ *  free software; you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation; either version 2 of the License, or
+ *  (at your option) any later version.
+ *
+ *  The GNU General Public License can be found at
+ *  http://www.gnu.org/copyleft/gpl.html.
+ *
+ *  This script is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  This copyright notice MUST APPEAR in all copies of the script!
+ ***************************************************************/
+
+class Session extends AbstractEntity {
+
 	/**
 	 * @var string
 	 */
 	protected $topic = '';
+
+	/**
+	 * @var string
+	 */
+	protected $description = '';
 
 	/**
 	 * @var string
@@ -34,30 +65,25 @@ class Tx_Sessionplaner_Domain_Model_Session extends Tx_Extbase_DomainObject_Abst
 	/**
 	 * @var string
 	 */
-	protected $description = '';
-
-	/**
-	 * @var string
-	 */
 	protected $download = '';
 
 	/**
-	 * @var Tx_Sessionplaner_Domain_Model_Day
+	 * @var \SP\Sessionplaner\Domain\Model\Day
 	 */
 	protected $day;
 
 	/**
-	 * @var Tx_Sessionplaner_Domain_Model_Room
+	 * @var \SP\Sessionplaner\Domain\Model\Room
 	 */
 	protected $room;
 
 	/**
-	 * @var Tx_Sessionplaner_Domain_Model_Slot
+	 * @var \SP\Sessionplaner\Domain\Model\Slot
 	 */
 	protected $slot;
 
 	/**
-	 * @var Tx_Extbase_Persistence_ObjectStorage<Tx_Sessionplaner_Domain_Model_Tag>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\SP\Sessionplaner\Domain\Model\Tag>
 	 * @lazy
 	 */
 	protected $tags;
@@ -66,91 +92,7 @@ class Tx_Sessionplaner_Domain_Model_Session extends Tx_Extbase_DomainObject_Abst
 	 * Initialize day, room, slot and tags
 	 */
 	public function __construct() {
-		$this->tags = new Tx_Extbase_Persistence_ObjectStorage();
-	}
-
-	/**
-	 * @param int $attendees
-	 */
-	public function setAttendees($attendees) {
-		$this->attendees = $attendees;
-	}
-
-	/**
-	 * @return int
-	 */
-	public function getAttendees() {
-		return $this->attendees;
-	}
-
-	/**
-	 * @param string $description
-	 */
-	public function setDescription($description) {
-		$this->description = $description;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getDescription() {
-		return $this->description;
-	}
-
-	/**
-	 * @param string $download
-	 */
-	public function setDownload($download) {
-		$this->download = $download;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getDownload() {
-		return $this->download;
-	}
-
-	/**
-	 * @param int $level
-	 */
-	public function setLevel($level) {
-		$this->level = $level;
-	}
-
-	/**
-	 * @return int
-	 */
-	public function getLevel() {
-		return $this->level;
-	}
-
-	/**
-	 * @param string $speaker
-	 */
-	public function setSpeaker($speaker) {
-		$this->speaker = $speaker;
-	}
-
-	/**
-	 * @return string
-	 */
-	public function getSpeaker() {
-		return $this->speaker;
-	}
-
-	/**
-	 * @param \Tx_Extbase_Persistence_ObjectStorage $tags
-	 */
-	public function setTags($tags) {
-		$this->tags = $tags;
-	}
-
-	/**
-	 * @return \Tx_Extbase_Persistence_ObjectStorage
-	 */
-	public function getTags() {
-		return $this->tags;
+		$this->tags = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 	}
 
 	/**
@@ -168,6 +110,34 @@ class Tx_Sessionplaner_Domain_Model_Session extends Tx_Extbase_DomainObject_Abst
 	}
 
 	/**
+	 * @param string $description
+	 */
+	public function setDescription($description) {
+		$this->description = $description;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getDescription() {
+		return $this->description;
+	}
+
+	/**
+	 * @param string $speaker
+	 */
+	public function setSpeaker($speaker) {
+		$this->speaker = $speaker;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getSpeaker() {
+		return $this->speaker;
+	}
+
+	/**
 	 * @param string $twitter
 	 */
 	public function setTwitter($twitter) {
@@ -179,6 +149,20 @@ class Tx_Sessionplaner_Domain_Model_Session extends Tx_Extbase_DomainObject_Abst
 	 */
 	public function getTwitter() {
 		return $this->twitter;
+	}
+
+	/**
+	 * @param int $attendees
+	 */
+	public function setAttendees($attendees) {
+		$this->attendees = $attendees;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getAttendees() {
+		return $this->attendees;
 	}
 
 	/**
@@ -196,46 +180,89 @@ class Tx_Sessionplaner_Domain_Model_Session extends Tx_Extbase_DomainObject_Abst
 	}
 
 	/**
-	 * @param \Tx_Sessionplaner_Domain_Model_Day $day
+	 * @param int $level
 	 */
-	public function setDay($day) {
+	public function setLevel($level) {
+		$this->level = $level;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function getLevel() {
+		return $this->level;
+	}
+
+	/**
+	 * @param string $download
+	 */
+	public function setDownload($download) {
+		$this->download = $download;
+	}
+
+	/**
+	 * @return string
+	 */
+	public function getDownload() {
+		return $this->download;
+	}
+
+	/**
+	 * @param \SP\Sessionplaner\Domain\Model\Day $day
+	 */
+	public function setDay(\SP\Sessionplaner\Domain\Model\Day $day) {
 		$this->day = $day;
 	}
 
 	/**
-	 * @return \Tx_Sessionplaner_Domain_Model_Day
+	 * @return \SP\Sessionplaner\Domain\Model\Day
 	 */
 	public function getDay() {
 		return $this->day;
 	}
 
 	/**
-	 * @param \Tx_Sessionplaner_Domain_Model_Room $room
+	 * @param \SP\Sessionplaner\Domain\Model\Room $room
 	 */
-	public function setRoom($room) {
+	public function setRoom(\SP\Sessionplaner\Domain\Model\Room $room) {
 		$this->room = $room;
 	}
 
 	/**
-	 * @return \Tx_Sessionplaner_Domain_Model_Room
+	 * @return \SP\Sessionplaner\Domain\Model\Room
 	 */
 	public function getRoom() {
 		return $this->room;
 	}
 
 	/**
-	 * @param \Tx_Sessionplaner_Domain_Model_Slot $slot
+	 * @param \SP\Sessionplaner\Domain\Model\Slot $slot
 	 */
-	public function setSlot($slot) {
+	public function setSlot(\SP\Sessionplaner\Domain\Model\Slot $slot) {
 		$this->slot = $slot;
 	}
 
 	/**
-	 * @return \Tx_Sessionplaner_Domain_Model_Slot
+	 * @return \SP\Sessionplaner\Domain\Model\Slot
 	 */
 	public function getSlot() {
 		return $this->slot;
 	}
+
+	/**
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $tags
+	 */
+	public function setTags(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $tags) {
+		$this->tags = $tags;
+	}
+
+	/**
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+	 */
+	public function getTags() {
+		return $this->tags;
+	}
+
 }
 
 ?>

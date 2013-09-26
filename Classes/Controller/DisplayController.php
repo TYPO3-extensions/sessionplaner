@@ -1,4 +1,7 @@
 <?php
+namespace SP\Sessionplaner\Controller;
+use \TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+
 /***************************************************************
  *  Copyright notice
  *
@@ -25,30 +28,31 @@
 /**
  * An display controller
  */
-class Tx_Sessionplaner_Controller_DisplayController extends Tx_Extbase_MVC_Controller_ActionController {
+class DisplayController extends ActionController {
+
 	/**
-	 * @var Tx_Sessionplaner_Domain_Repository_DayRepository
+	 * @var \SP\Sessionplaner\Domain\Repository\DayRepository
 	 */
 	protected $dayRepository;
 
 	/**
-	 * @var Tx_Sessionplaner_Domain_Repository_SessionRepository
+	 * @var \SP\Sessionplaner\Domain\Repository\SessionRepository
 	 */
 	protected $sessionRepository;
 
 	/**
-	 * @param Tx_Sessionplaner_Domain_Repository_DayRepository $repository
+	 * @param \SP\Sessionplaner\Domain\Repository\DayRepository $repository
 	 * @return void
 	 */
-	public function injectDayRepository(Tx_Sessionplaner_Domain_Repository_DayRepository $repository) {
+	public function injectDayRepository(\SP\Sessionplaner\Domain\Repository\DayRepository $repository) {
 		$this->dayRepository = $repository;
 	}
 
 	/**
-	 * @param Tx_Sessionplaner_Domain_Repository_SessionRepository $repository
+	 * @param \SP\Sessionplaner\Domain\Repository\SessionRepository $repository
 	 * @return void
 	 */
-	public function injectSessionRepository(Tx_Sessionplaner_Domain_Repository_SessionRepository $repository) {
+	public function injectSessionRepository(\SP\Sessionplaner\Domain\Repository\SessionRepository $repository) {
 		$this->sessionRepository = $repository;
 	}
 
@@ -61,14 +65,23 @@ class Tx_Sessionplaner_Controller_DisplayController extends Tx_Extbase_MVC_Contr
 		$this->view->assign('days', $days);
 	}
 
+	/**
+	 * @return void
+	 */
 	public function showDay() {
 
 	}
 
+	/**
+	 * @return void
+	 */
 	public function showRoom() {
 
 	}
 
+	/**
+	 * @return void
+	 */
 	public function listSessions() {
 
 	}
@@ -79,6 +92,7 @@ class Tx_Sessionplaner_Controller_DisplayController extends Tx_Extbase_MVC_Contr
 	public function screenAction() {
 
 	}
+
 }
 
 ?>

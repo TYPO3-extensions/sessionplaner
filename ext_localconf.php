@@ -3,17 +3,28 @@ if (!defined('TYPO3_MODE')) {
 	die('Access denied.');
 }
 
-t3lib_extMgm::addPItoST43($_EXTKEY, 'Classes/Controller/Pi1.php', '_pi1', 'list_type', 1);
+/**
+ * @todo remove later
+ */
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPItoST43($_EXTKEY, 'Classes/Controller/Pi1.php', '_pi1', 'list_type', 1);
 
-Tx_Extbase_Utility_Extension::configurePlugin(
-	$_EXTKEY,
+
+/**
+ * Default PageTS
+ */
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig('<INCLUDE_TYPOSCRIPT: source="FILE:EXT:'.$_EXTKEY.'/Configuration/PageTS/ModWizards.ts">');
+
+
+/**
+ * Configure Frontend Plugin
+ */
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+	'SP.' . $_EXTKEY,
 	'Display',
 	array(
 		'Display' => 'listDays, showDay, showRoom, listSessions, screen',
 	),
-	array(
-		'Display' => '',
-	)
+	array()
 );
 
 ?>

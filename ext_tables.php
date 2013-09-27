@@ -4,6 +4,7 @@ if (!defined('TYPO3_MODE')) {
 }
 
 
+/** @noinspection PhpUndefinedVariableInspection */
 define('SP_LLL', 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_tca.xml:');
 
 
@@ -152,6 +153,26 @@ if (TYPO3_MODE === 'BE') {
 );
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist']['sessionplaner_display'] = 'layout, select_key';
 $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['sessionplaner_display'] = 'pi_flexform';
-\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue('sessionplaner_display', 'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/Display.xml');
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
+	'sessionplaner_display',
+	'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/Display.xml'
+);
+
+
+/**
+ * Frontend Plugin
+ */
+\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+	'Evoweb.' . $_EXTKEY,
+	'Edit',
+	'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_be.xml:tt_content.list_type_edit',
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'ext_icon.gif'
+);
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_excludelist']['sessionplaner_edit'] = 'layout, select_key';
+$GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist']['sessionplaner_edit'] = 'pi_flexform';
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue(
+	'sessionplaner_edit',
+	'FILE:EXT:' . $_EXTKEY . '/Configuration/FlexForms/Edit.xml'
+);
 
 ?>

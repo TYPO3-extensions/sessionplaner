@@ -33,7 +33,16 @@
 			<label index="tx_sessionplaner_domain_model_session-slot">Slot</label>
 			<label index="tx_sessionplaner_domain_model_session-tags">Tags</label>
 			<label index="tx_sessionplaner_domain_model_session-type">Type</label>
+			<label index="tx_sessionplaner_domain_model_session-type-talk">Talk</label>
+			<label index="tx_sessionplaner_domain_model_session-type-tutorial">Tutorial</label>
+			<label index="tx_sessionplaner_domain_model_session-type-workshop">Workshop</label>
+			<label index="tx_sessionplaner_domain_model_session-type-other">Other</label>
+			<label index="tx_sessionplaner_domain_model_session-type-break">Break</label>
 			<label index="tx_sessionplaner_domain_model_session-level">Level</label>
+			<label index="tx_sessionplaner_domain_model_session-level-starter">Starter / Overview</label>
+			<label index="tx_sessionplaner_domain_model_session-level-advanced">Advanced / Basic knowleg</label>
+			<label index="tx_sessionplaner_domain_model_session-level-pro">Pro / Detailed</label>
+			<label index="tx_sessionplaner_domain_model_session-day">Day</label>
 			<label index="tx_sessionplaner_domain_model_session-description">Description</label>
 			<label index="tx_sessionplaner_domain_model_session-download">Download Link</label>
 			<label index="tx_sessionplaner_domain_model_tag">Tag</label>

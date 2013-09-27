@@ -73,9 +73,12 @@ $GLOBALS['TCA']['tx_sessionplaner_domain_model_session'] = array(
 			'config' => array(
 				'type' => 'select',
 				'items' => array(
-					'0'=> array(
-						'0' => SP_LLL . 'notassigned',
-					),
+					array(SP_LLL . 'notassigned', 0),
+					array(SP_LLL . 'tx_sessionplaner_domain_model_session-type-talk', 1),
+					array(SP_LLL . 'tx_sessionplaner_domain_model_session-type-tutorial', 2),
+					array(SP_LLL . 'tx_sessionplaner_domain_model_session-type-workshop', 3),
+					array(SP_LLL . 'tx_sessionplaner_domain_model_session-type-other', 4),
+					array(SP_LLL . 'tx_sessionplaner_domain_model_session-type-break', 5),
 				),
 			),
 		),
@@ -85,9 +88,10 @@ $GLOBALS['TCA']['tx_sessionplaner_domain_model_session'] = array(
 			'config' => array(
 				'type' => 'select',
 				'items' => array(
-					'0'=> array(
-						'0' => SP_LLL . 'notassigned',
-					),
+					array(SP_LLL . 'notassigned', 0),
+					array(SP_LLL . 'tx_sessionplaner_domain_model_session-level-starter', 1),
+					array(SP_LLL . 'tx_sessionplaner_domain_model_session-level-advanced', 2),
+					array(SP_LLL . 'tx_sessionplaner_domain_model_session-level-pro', 3),
 				),
 			),
 		),

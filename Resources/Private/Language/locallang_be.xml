@@ -6,8 +6,10 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
-			<label index="tt_content.list_type_pi1">Sesionplan old</label>
-			<label index="tt_content.list_type_display">Sesionplan</label>
+			<label index="tt_content.list_type_display">Sessionplan display</label>
+			<label index="tt_content.list_type_display_description">Show sessions</label>
+			<label index="tt_content.list_type_edit">Sessionplan edit/suggest</label>
+			<label index="tt_content.list_type_edit_description">Edit or suggest sessions</label>
 
 			<label index="display_flexform.sheet_general">Common settings</label>
 			<label index="display_flexform.switchableControllerAction">Display</label>
@@ -16,10 +18,14 @@
 			<label index="display_flexform.switchableControllerAction.showRoom">List room</label>
 			<label index="display_flexform.switchableControllerAction.listSessions">List sessions</label>
 			<label index="display_flexform.switchableControllerAction.screen">Overview</label>
+
+			<label index="edit_flexform.switchableControllerAction.suggest">Suggest</label>
 		</languageKey>
 		<languageKey index="de" type="array">
-			<label index="tt_content.list_type_pi1">Sesionplanung old</label>
-			<label index="tt_content.list_type_display">Sesionplanung</label>
+			<label index="tt_content.list_type_display">Sessionplanung anzeigen</label>
+			<label index="tt_content.list_type_display_description">Sesions anzeigen</label>
+			<label index="tt_content.list_type_edit">Sessionplanung bearbeiten/vorschlagen</label>
+			<label index="tt_content.list_type_edit_description">Sessions bearbeiten oder vorschlagen</label>
 		</languageKey>
 	</data>
 </T3locallang>

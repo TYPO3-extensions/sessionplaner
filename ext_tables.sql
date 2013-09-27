@@ -87,7 +87,7 @@ CREATE TABLE tx_sessionplaner_domain_model_session (
 	attendees int(11) unsigned DEFAULT '0' NOT NULL,
 	type int(11) unsigned DEFAULT '0' NOT NULL,
 	level int(11) unsigned DEFAULT '0' NOT NULL,
-	description varchar(255) DEFAULT '' NOT NULL,
+	description text,
 	download varchar(255) DEFAULT '' NOT NULL,
 
 	day int(11) unsigned DEFAULT '0' NOT NULL,

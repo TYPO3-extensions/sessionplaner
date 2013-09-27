@@ -59,6 +59,24 @@ class EditController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 	public function showAction() {
 
 	}
+
+	/**
+	 * @param \Evoweb\Sessionplaner\Domain\Model\Session $session
+	 */
+	public function suggestFormAction(\Evoweb\Sessionplaner\Domain\Model\Session $session = NULL) {
+		$this->view->assign('session', $session);
+	}
+
+	/**
+	 * @param \Evoweb\Sessionplaner\Domain\Model\Session $session
+	 */
+	public function suggestSaveAction(\Evoweb\Sessionplaner\Domain\Model\Session $session = NULL) {
+		if ($session === NULL) {
+			$this->forward('suggestForm');
+		}
+
+		$this->sessionRepository->add($session);
+	}
 }
 
 ?>

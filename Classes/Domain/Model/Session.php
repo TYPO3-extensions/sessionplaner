@@ -26,16 +26,22 @@ namespace Evoweb\Sessionplaner\Domain\Model;
 class Session extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * @var string
+	 * @validate NotEmpty
+	 * @validate StringLength(minimum=1, maximum=255)
 	 */
 	protected $topic = '';
 
 	/**
 	 * @var string
+	 * @validate NotEmpty
+	 * @validate StringLength(minimum=1, maximum=4000)
 	 */
 	protected $description = '';
 
 	/**
 	 * @var string
+	 * @validate NotEmpty
+	 * @validate StringLength(minimum=1, maximum=255)
 	 */
 	protected $speaker = '';
 

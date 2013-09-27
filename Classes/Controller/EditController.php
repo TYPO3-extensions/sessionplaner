@@ -64,6 +64,11 @@ class EditController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 	 * @param \Evoweb\Sessionplaner\Domain\Model\Session $session
 	 */
 	public function suggestFormAction(\Evoweb\Sessionplaner\Domain\Model\Session $session = NULL) {
+		 // Has a session been submitted?
+		if ($session === null){
+			// Get a blank one
+			$session = $this->objectManager->get("Evoweb\\Sessionplaner\\Domain\\Model\\Session");
+		}
 		$this->view->assign('session', $session);
 	}
 
@@ -72,11 +77,27 @@ class EditController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 	 */
 	public function suggestSaveAction(\Evoweb\Sessionplaner\Domain\Model\Session $session = NULL) {
 		if ($session === NULL) {
-			$this->forward('suggestForm');
+			// redirect to drop unwanted parameters
+			$this->redirect('suggestForm');
 		}
-
 		$this->sessionRepository->add($session);
+		// Add Success Flash Message
+		$title = NULL;
+		$message = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('yourSessionIsSaved', 'sessionplaner');
+		$this->flashMessageContainer->add($message, $title, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
+		// Redirect to prevent multiple entries through reloading
+		$this->redirect('suggestForm');
 	}
+
+	/**
+	 * Disable error flash message
+	 *
+	 * @return boolean
+	 */
+	protected function getErrorFlashMessage() {
+		return FALSE;
+	}
+
 }
 
 ?>

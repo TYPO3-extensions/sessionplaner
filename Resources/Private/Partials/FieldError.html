@@ -11,8 +11,15 @@
 			<f:for each="{validationResults.flattenedErrors}" key="propertyPath" as="propertyErrors">
 				<f:if condition="{propertyPath}=={field}">
 					<f:for each="{propertyErrors}" as="propertyError">
-						<div class="error errorMessage errorField field{field -> f:cObject(typoscriptObjectPath: 'plugin.tx_sfregister.fieldError')}">
-							{f:translate(key: 'field_{propertyError.code}') -> f:format.printf(arguments: {field: '{f:translate(key: \'{propertyPath}\')}'})}
+						<div class="error error-message error-field error-field-{propertyPath} error-code-{propertyError.code}">
+							<f:if condition="{f:translate(key: 'field_{propertyError.code}') -> f:format.printf(arguments: {field: '{f:translate(key: \'{propertyPath}\')}'})}">
+								<f:then>
+									{f:translate(key: 'field_{propertyError.code}') -> f:format.printf(arguments: {field: '{f:translate(key: \'{propertyPath}\')}'})}
+								</f:then>
+								<f:else>
+									{propertyError.message}
+								</f:else>
+							</f:if>
 						</div>
 					</f:for>
 				</f:if>

@@ -1,7 +1,5 @@
 <?php
-namespace SP\Sessionplaner\Domain\Model;
-use \TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
-
+namespace Evoweb\Sessionplaner\Domain\Model;
 /***************************************************************
  *  Copyright notice
  *
@@ -25,8 +23,7 @@ use \TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-class Session extends AbstractEntity {
-
+class Session extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * @var string
 	 */
@@ -68,22 +65,22 @@ class Session extends AbstractEntity {
 	protected $download = '';
 
 	/**
-	 * @var \SP\Sessionplaner\Domain\Model\Day
+	 * @var \Evoweb\Sessionplaner\Domain\Model\Day
 	 */
 	protected $day;
 
 	/**
-	 * @var \SP\Sessionplaner\Domain\Model\Room
+	 * @var \Evoweb\Sessionplaner\Domain\Model\Room
 	 */
 	protected $room;
 
 	/**
-	 * @var \SP\Sessionplaner\Domain\Model\Slot
+	 * @var \Evoweb\Sessionplaner\Domain\Model\Slot
 	 */
 	protected $slot;
 
 	/**
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\SP\Sessionplaner\Domain\Model\Tag>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Evoweb\Sessionplaner\Domain\Model\Tag>
 	 * @lazy
 	 */
 	protected $tags;
@@ -208,42 +205,42 @@ class Session extends AbstractEntity {
 	}
 
 	/**
-	 * @param \SP\Sessionplaner\Domain\Model\Day $day
+	 * @param \Evoweb\Sessionplaner\Domain\Model\Day $day
 	 */
-	public function setDay(\SP\Sessionplaner\Domain\Model\Day $day) {
+	public function setDay(\Evoweb\Sessionplaner\Domain\Model\Day $day) {
 		$this->day = $day;
 	}
 
 	/**
-	 * @return \SP\Sessionplaner\Domain\Model\Day
+	 * @return \Evoweb\Sessionplaner\Domain\Model\Day
 	 */
 	public function getDay() {
 		return $this->day;
 	}
 
 	/**
-	 * @param \SP\Sessionplaner\Domain\Model\Room $room
+	 * @param \Evoweb\Sessionplaner\Domain\Model\Room $room
 	 */
-	public function setRoom(\SP\Sessionplaner\Domain\Model\Room $room) {
+	public function setRoom(\Evoweb\Sessionplaner\Domain\Model\Room $room) {
 		$this->room = $room;
 	}
 
 	/**
-	 * @return \SP\Sessionplaner\Domain\Model\Room
+	 * @return \Evoweb\Sessionplaner\Domain\Model\Room
 	 */
 	public function getRoom() {
 		return $this->room;
 	}
 
 	/**
-	 * @param \SP\Sessionplaner\Domain\Model\Slot $slot
+	 * @param \Evoweb\Sessionplaner\Domain\Model\Slot $slot
 	 */
-	public function setSlot(\SP\Sessionplaner\Domain\Model\Slot $slot) {
+	public function setSlot(\Evoweb\Sessionplaner\Domain\Model\Slot $slot) {
 		$this->slot = $slot;
 	}
 
 	/**
-	 * @return \SP\Sessionplaner\Domain\Model\Slot
+	 * @return \Evoweb\Sessionplaner\Domain\Model\Slot
 	 */
 	public function getSlot() {
 		return $this->slot;
@@ -262,7 +259,6 @@ class Session extends AbstractEntity {
 	public function getTags() {
 		return $this->tags;
 	}
-
 }
 
 ?>

@@ -1,9 +1,5 @@
 <?php
-namespace SP\Sessionplaner\Controller;
-use \SP\Sessionplaner\Domain\Repository\DayRepository;
-use \SP\Sessionplaner\Domain\Repository\SessionRepository;
-use \TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-
+namespace Evoweb\Sessionplaner\Controller;
 /***************************************************************
  *  Copyright notice
  *
@@ -30,31 +26,30 @@ use \TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 /**
  * An display controller
  */
-class EditController extends ActionController {
-
+class EditController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 	/**
-	 * @var DayRepository
+	 * @var \Evoweb\Sessionplaner\Domain\Repository\DayRepository
 	 */
 	protected $dayRepository;
 
 	/**
-	 * @var SessionRepository
+	 * @var \Evoweb\Sessionplaner\Domain\Repository\SessionRepository
 	 */
 	protected $sessionRepository;
 
 	/**
-	 * @param DayRepository $repository
+	 * @param \Evoweb\Sessionplaner\Domain\Repository\DayRepository $repository
 	 * @return void
 	 */
-	public function injectDayRepository(DayRepository $repository) {
+	public function injectDayRepository(\Evoweb\Sessionplaner\Domain\Repository\DayRepository $repository) {
 		$this->dayRepository = $repository;
 	}
 
 	/**
-	 * @param SessionRepository $repository
+	 * @param \Evoweb\Sessionplaner\Domain\Repository\SessionRepository $repository
 	 * @return void
 	 */
-	public function injectSessionRepository(SessionRepository $repository) {
+	public function injectSessionRepository(\Evoweb\Sessionplaner\Domain\Repository\SessionRepository $repository) {
 		$this->sessionRepository = $repository;
 	}
 
@@ -64,7 +59,6 @@ class EditController extends ActionController {
 	public function showAction() {
 
 	}
-
 }
 
 ?>

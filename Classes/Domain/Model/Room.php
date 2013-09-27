@@ -1,7 +1,5 @@
 <?php
-namespace SP\Sessionplaner\Domain\Model;
-use \TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
-
+namespace Evoweb\Sessionplaner\Domain\Model;
 /***************************************************************
  *  Copyright notice
  *
@@ -25,7 +23,7 @@ use \TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-class Room extends AbstractEntity {
+class Room extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 
 	/**
 	 * @var string
@@ -43,19 +41,19 @@ class Room extends AbstractEntity {
 	protected $seats = 0;
 
 	/**
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\SP\Sessionplaner\Domain\Model\Day>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Evoweb\Sessionplaner\Domain\Model\Day>
 	 * @lazy
 	 */
 	protected $days;
 
 	/**
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\SP\Sessionplaner\Domain\Model\Slot>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Evoweb\Sessionplaner\Domain\Model\Slot>
 	 * @lazy
 	 */
 	protected $slots;
 
 	/**
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\SP\Sessionplaner\Domain\Model\Session>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Evoweb\Sessionplaner\Domain\Model\Session>
 	 * @lazy
 	 */
     protected $sessions;
@@ -140,19 +138,18 @@ class Room extends AbstractEntity {
 	}
 
 	/**
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
-	 */
-	public function getSessions() {
-		return $this->sessions;
-	}
-
-	/**
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $slots
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $sessions
 	 */
 	public function setSessions(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $sessions) {
 		$this->sessions = $sessions;
 	}
 
+	/**
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+	 */
+	public function getSessions() {
+		return $this->sessions;
+	}
 }
 
 ?>

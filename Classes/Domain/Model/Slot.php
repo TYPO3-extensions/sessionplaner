@@ -1,7 +1,5 @@
 <?php
-namespace SP\Sessionplaner\Domain\Model;
-use \TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
-
+namespace Evoweb\Sessionplaner\Domain\Model;
 /***************************************************************
  *  Copyright notice
  *
@@ -25,7 +23,7 @@ use \TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-class Slot extends AbstractEntity {
+class Slot extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 
 	/**
 	 * @var \DateTime
@@ -48,26 +46,23 @@ class Slot extends AbstractEntity {
 	protected $noBreakAfter = FALSE;
 
 	/**
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\SP\Sessionplaner\Domain\Model\Day>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Evoweb\Sessionplaner\Domain\Model\Day>
 	 * @lazy
 	 */
 	protected $days;
 
 	/**
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\SP\Sessionplaner\Domain\Model\Room>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Evoweb\Sessionplaner\Domain\Model\Room>
 	 * @lazy
 	 */
 	protected $rooms;
 
 	/**
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\SP\Sessionplaner\Domain\Model\Session>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Evoweb\Sessionplaner\Domain\Model\Session>
 	 * @lazy
 	 */
 	protected $sessions;
 
-	/**
-	 * @return void
-	 */
 	public function __construct() {
 		$this->days = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 		$this->rooms = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();

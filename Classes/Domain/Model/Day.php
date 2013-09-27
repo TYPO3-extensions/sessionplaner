@@ -1,7 +1,5 @@
 <?php
-namespace SP\Sessionplaner\Domain\Model;
-use \TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
-
+namespace Evoweb\Sessionplaner\Domain\Model;
 /***************************************************************
  *  Copyright notice
  *
@@ -25,7 +23,7 @@ use \TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-class Day extends AbstractEntity {
+class Day extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 
 	/**
 	 * @var \string
@@ -38,13 +36,13 @@ class Day extends AbstractEntity {
 	protected $date = '';
 
 	/**
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\SP\Sessionplaner\Domain\Model\Room>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Evoweb\Sessionplaner\Domain\Model\Room>
 	 * @lazy
 	 */
 	protected $rooms;
 
 	/**
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\SP\Sessionplaner\Domain\Model\Slot>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Evoweb\Sessionplaner\Domain\Model\Slot>
 	 * @lazy
 	 */
 	protected $slots;

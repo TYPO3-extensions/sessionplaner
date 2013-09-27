@@ -1,7 +1,5 @@
 <?php
-namespace SP\Sessionplaner\Domain\Model;
-use \TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
-
+namespace Evoweb\Sessionplaner\Domain\Model;
 /***************************************************************
  *  Copyright notice
  *
@@ -25,15 +23,14 @@ use \TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-class Tag extends AbstractEntity {
-
+class Tag extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
 	 * @var string
 	 */
 	protected $label = '';
 
 	/**
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\SP\Sessionplaner\Domain\Model\Session>
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Evoweb\Sessionplaner\Domain\Model\Session>
 	 * @lazy
 	 */
 	protected $sessions;
@@ -72,7 +69,6 @@ class Tag extends AbstractEntity {
 	public function getSessions() {
 		return $this->sessions;
 	}
-
 }
 
 ?>

@@ -1,7 +1,5 @@
 <?php
-namespace SP\Sessionplaner\Domain\Repository;
-use \TYPO3\CMS\Extbase\Persistence\Repository;
-
+namespace Evoweb\Sessionplaner\Domain\Repository;
 /***************************************************************
  *  Copyright notice
  *
@@ -25,7 +23,7 @@ use \TYPO3\CMS\Extbase\Persistence\Repository;
  *  This copyright notice MUST APPEAR in all copies of the script!
  ***************************************************************/
 
-class RoomRepository extends Repository {
+class RoomRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
 }
 

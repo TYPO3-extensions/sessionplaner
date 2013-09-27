@@ -19,7 +19,7 @@ if (!defined('TYPO3_MODE')) {
  * Configure Frontend Plugin
  */
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-	'SP.' . $_EXTKEY,
+	'Evoweb.' . $_EXTKEY,
 	'Display',
 	array(
 		'Display' => 'listDays, showDay, showRoom, listSessions, screen',

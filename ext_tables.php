@@ -125,7 +125,7 @@ if (TYPO3_MODE === 'BE') {
 	 * Backend Module
 	 */
 	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
-		'SP.' . $_EXTKEY,
+		'Evoweb.' . $_EXTKEY,
 		'web',
 		'tx_sessionplaner_m1',
 		'',
@@ -145,7 +145,7 @@ if (TYPO3_MODE === 'BE') {
  * Frontend Plugin
  */
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-	'SP.' . $_EXTKEY,
+	'Evoweb.' . $_EXTKEY,
 	'Display',
 	'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_be.xml:tt_content.list_type_display',
 	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::extRelPath($_EXTKEY) . 'ext_icon.gif'

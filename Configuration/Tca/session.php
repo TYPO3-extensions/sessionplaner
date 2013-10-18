@@ -106,7 +106,7 @@ $GLOBALS['TCA']['tx_sessionplaner_domain_model_session'] = array(
 				'minitems' => 0,
 				'maxitems' => 1,
 				'items' => array(
-					'0'=> array(
+					'0' => array(
 						'0' => SP_LLL . 'notassigned',
 					),
 				),
@@ -128,7 +128,7 @@ $GLOBALS['TCA']['tx_sessionplaner_domain_model_session'] = array(
 				'minitems' => 0,
 				'maxitems' => 1,
 				'items' => array(
-					'0'=> array(
+					'0' => array(
 						'0' => SP_LLL . 'notassigned',
 					),
 				),
@@ -150,7 +150,7 @@ $GLOBALS['TCA']['tx_sessionplaner_domain_model_session'] = array(
 				'minitems' => 0,
 				'maxitems' => 1,
 				'items' => array(
-					'0'=> array(
+					'0' => array(
 						'0' => SP_LLL . 'notassigned',
 					),
 				),

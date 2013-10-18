@@ -49,10 +49,7 @@ $GLOBALS['TCA']['tx_sessionplaner_domain_model_room'] = array(
 			'exclude' => 0,
 			'label' => SP_LLL . 'tx_sessionplaner_domain_model_room-days',
 			'config' => array(
-				'type' => 'group',
-				'internal_type' => 'db',
-				'allowed' => 'tx_sessionplaner_domain_model_day',
-					// needed for extbase query
+				'type' => 'select',
 				'foreign_table' => 'tx_sessionplaner_domain_model_day',
 				'foreign_where' => 'pid = ###CURRENT_PID### ORDER BY tx_sessionplaner_domain_model_day.name',
 				'MM' => 'tx_sessionplaner_day_room_mm',
@@ -60,11 +57,6 @@ $GLOBALS['TCA']['tx_sessionplaner_domain_model_room'] = array(
 				'size' => 5,
 				'minitems' => 0,
 				'maxitems' => 100,
-				'wizards' => array(
-					'suggest' => array(
-						'type' => 'suggest',
-					),
-				),
 			),
 		),
 		'slots' => array(
@@ -72,19 +64,13 @@ $GLOBALS['TCA']['tx_sessionplaner_domain_model_room'] = array(
 			'label' => SP_LLL . 'tx_sessionplaner_domain_model_room-slots',
 			'config' => array(
 				'type' => 'select',
-				'allowed' => 'tx_sessionplaner_domain_model_slot',
-					// needed for extbase query
 				'foreign_table' => 'tx_sessionplaner_domain_model_slot',
 				'foreign_where' => 'pid = ###CURRENT_PID###',
 				'MM' => 'tx_sessionplaner_room_slot_mm',
 				'size' => 10,
 				'minitems' => 0,
 				'maxitems' => 100,
-				'wizards' => array(
-					'suggest' => array(
-						'type' => 'suggest',
-					),
-				),
+				'autoSizeMax' => 100,
 			),
 		),
 		'sessions' => array(
@@ -96,6 +82,7 @@ $GLOBALS['TCA']['tx_sessionplaner_domain_model_room'] = array(
 				'foreign_where' => 'roomt = ###CURRENT_PID###',
 				'foreign_field' => 'room',
 				'size' => 5,
+				'autoSizeMax' => 20,
 			),
 		),
 	),

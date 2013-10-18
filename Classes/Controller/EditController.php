@@ -57,17 +57,27 @@ class EditController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 	 * @return void
 	 */
 	public function showAction() {
+		if ($this->request->hasArgument('day')) {
+			$day = $this->dayRepository->findByUid($this->request->getArgument('day'));
+		} else {
+			/** @var \Evoweb\Sessionplaner\Domain\Model\Day $day */
+			$day = $this->dayRepository->findAll()->getFirst();
+		}
 
+		$this->view->assign('currentDay', $day);
+		$this->view->assign('roomCount', count($day->getRooms()));
+		$this->view->assign('days', $this->dayRepository->findAll());
+		$this->view->assign('unassignedSessions', $this->sessionRepository->findByDayAndEmptySlot($day));
 	}
 
 	/**
 	 * @param \Evoweb\Sessionplaner\Domain\Model\Session $session
 	 */
 	public function suggestFormAction(\Evoweb\Sessionplaner\Domain\Model\Session $session = NULL) {
-		 // Has a session been submitted?
-		if ($session === null){
-			// Get a blank one
-			$session = $this->objectManager->get("Evoweb\\Sessionplaner\\Domain\\Model\\Session");
+			// Has a session been submitted?
+		if ($session === NULL) {
+				// Get a blank one
+			$session = $this->objectManager->get('Evoweb\\Sessionplaner\\Domain\\Model\\Session');
 		}
 		$this->view->assign('session', $session);
 	}
@@ -77,15 +87,23 @@ class EditController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 	 */
 	public function suggestSaveAction(\Evoweb\Sessionplaner\Domain\Model\Session $session = NULL) {
 		if ($session === NULL) {
-			// redirect to drop unwanted parameters
+				// redirect to drop unwanted parameters
 			$this->redirect('suggestForm');
 		}
 		$this->sessionRepository->add($session);
-		// Add Success Flash Message
-		$title = NULL;
-		$message = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('yourSessionIsSaved', 'sessionplaner');
-		$this->flashMessageContainer->add($message, $title, \TYPO3\CMS\Core\Messaging\FlashMessage::OK);
-		// Redirect to prevent multiple entries through reloading
+
+			// Add Success Flash Message
+		/** @var $flashMessage \TYPO3\CMS\Core\Messaging\FlashMessage */
+		$flashMessage = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
+			'TYPO3\\CMS\\Core\\Messaging\\FlashMessage',
+			\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('yourSessionIsSaved', 'sessionplaner'),
+			$title = '',
+			\TYPO3\CMS\Core\Messaging\FlashMessage::OK,
+			TRUE
+		);
+		$this->controllerContext->getFlashMessageQueue()->enqueue($flashMessage);
+
+			// Redirect to prevent multiple entries through reloading
 		$this->redirect('suggestForm');
 	}
 
@@ -97,7 +115,6 @@ class EditController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController 
 	protected function getErrorFlashMessage() {
 		return FALSE;
 	}
-
 }
 
 ?>

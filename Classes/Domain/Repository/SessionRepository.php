@@ -24,7 +24,17 @@ namespace Evoweb\Sessionplaner\Domain\Repository;
  ***************************************************************/
 
 class SessionRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
+	/**
+	 * @param $day \Evoweb\Sessionplaner\Domain\Model\Day
+	 * @return array|\TYPO3\CMS\Extbase\Persistence\Generic\QueryResult
+	 */
+	public function findByDayAndEmptySlot($day) {
+		$query = $this->createQuery();
 
+		$query->matching($query->logicalAnd($query->equals('day', $day), $query->equals('slot', 0)));
+
+		return $query->execute();
+	}
 }
 
 ?>

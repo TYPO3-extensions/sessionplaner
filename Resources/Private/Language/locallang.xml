@@ -7,6 +7,12 @@
 	</meta>
 	<data type="array">
 		<languageKey index="default" type="array">
+			<label index="storageFolderEmpty"><![CDATA[The selected storage folder does not contain any days.<br/>
+				Please create days, rooms and slots previous planing sessions.<br/>
+				For further information consulte the documentation.]]></label>
+			<label index="session-new">Add new session</label>
+
+
 			<label index="filter-tags">Tags</label>
 			<label index="filter-user">Users</label>
 			<label index="filter-user">Sessiontyp</label>
@@ -22,6 +28,7 @@
 			<label index="description">Description</label>
 			<label index="speaker">Speaker</label>
 			<label index="twitter">Twitter</label>
+			<label index="attendees">Attendees</label>
 			<label index="type">Type</label>
 			<label index="type-talk">Talk</label>
 			<label index="type-tutorial">Tutorial</label>

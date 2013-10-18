@@ -1,3 +1,4 @@
+{namespace sp=Evoweb\Sessionplaner\ViewHelpers}
 <?xml version="1.0" encoding="UTF-8" ?>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en"
 	  xmlns:f="http://typo3.org/ns/TYPO3/Fluid/ViewHelpers">
@@ -5,46 +6,57 @@
 	<title>Edit form</title>
 </head>
 <body>
+
 <f:layout name="Backend" />
 
-<f:section name="iconButtons"/>
+<f:section name="iconFunctions">
+	<f:be.menus.actionMenu>
+		<f:for each="{days}" as="day">
+			<sp:be.menus.actionMenuItem
+				label="{day.name}" controller="Edit" action="show"
+				arguments="{day: day.uid}"
+				current="{currentDay.uid}" currentArgumentKey="day"/>
+		</f:for>
+	</f:be.menus.actionMenu>
+</f:section>
+
+<f:section name="iconLeftButtons">
+	<sp:be.buttons.icon uri="" icon="actions-document-new" title="{f:translate(key: 'session-new')}"/>
+</f:section>
+
+<f:section name="iconRightButtons">
+	<f:be.buttons.shortcut />
+	<sp:be.buttons.icon uri="#" icon="actions-window-open" title="{f:translate(key: 'LLL:EXT:lang/locallang_core.xlf:labels.openInNewWindow')}"
+		onclick="sessionplanerWin=window.open(location.href, 'Sessionplaner', 'width=790,status=0,menubar=0,resizable=1,location=0,scrollbars=1,toolbar=0'); return false;"/>
+</f:section>
 
 <f:section name="content">
+<f:if condition="{currentDay}">
+	<f:then>
+		<f:for each="{days}" as="day">
+			<f:if condition="{day} == {currentDay}">
+				<div id="sessionplaner">
+				<h1>{day.name}</h1>
 
-<div id="sessionplaner">
-	<f:for each="{days}" as="day">
-	<h3>{day.name}</h3>
-	<ul>
-		<f:for each="{day.rooms}" as="room">
-		<li class="room">
-			<h4>{room.name}</h4>
-			<ul>
-			<f:for each="{room.slots}" as="slot">
-				<li class="slot">
-					<span class="time"><f:format.date date="{slot.start}" format="H:i"/></span>
-					<f:for each="{room.sessions}" as="session">
-					<f:if condition="{0: day, 1: slot} == {0: session.day, 1: session.slot}">
-					<section>
-						<strong>{session.topic}</strong><br/>
-						<f:translate key="by"/> {session.speaker}
-						{session.twitter}
-						{session.attendees}
-						{session.type}
-						{session.level}
-						{session.description}
-						{session.download}
-					</section>
-					</f:if>
+				<div id="stash">
+					<f:for each="{unassignedSessions}" as="session">
+						<f:render partial="SessionCard" section="Main" arguments="{session: session}"/>
 					</f:for>
-				</li>
-			</f:for>
-			</ul>
-		</li>
-		</f:for>
-	</ul>
-	</f:for>
-</div>
+				</div>
 
+				<f:render partial="Grid" section="Main" arguments="{day: day}"/>
+				</div>
+			</f:if>
+		</f:for>
+		<f:render partial="SessionForm" section="Main" arguments="{day: currentDay}"/>
+		<script type="text/template" id="sessionCardTemplate">
+		<f:render partial="SessionCard" section="Main" arguments="{session: session}"/>
+		</script>
+	</f:then>
+	<f:else>
+		<f:translate key="storageFolderEmpty"/>
+	</f:else>
+</f:if>
 </f:section>
 </body>
 </html>

@@ -1,27 +1,23 @@
 <f:be.container
-		addCssFile="{f:uri.resource(path: 'Stylesheets/jquery-ui.min.css')},
-			{f:uri.resource(path: 'Stylesheets/backend.css')},
-			{f:uri.resource(path: 'Stylesheets/font-awesome.min.css')}"
-		addJsFile="{f:uri.resource(path: 'JavaScript/jquery.min.js')},
-			{f:uri.resource(path: 'JavaScript/jquery-ui.min.js')},
-			{f:uri.resource(path: 'JavaScript/jquery.hotkeys.js')},
-			{f:uri.resource(path: 'JavaScript/jquery-app.js')}">
+		loadJQuery="1"
+		addCssFile="{f:uri.resource(path: 'Stylesheets/backend.min.css')}"
+		addJsFile="{f:uri.resource(path: 'JavaScript/backend.min.js')}">
 	<div class="typo3-fullDoc">
 		<div id="typo3-docheader">
-			<div id="typo3-docheader-row1">
-				<div class="buttonsleft">
-					<f:render section="iconButtons" />
+			<div class="typo3-docheader-functions">
+				<div class="left">
+					<f:render section="iconFunctions" />
 				</div>
-				<div class="buttonsright">
-					<f:be.buttons.shortcut />
+				<div class="right">
+					<f:be.pagePath />
 				</div>
 			</div>
-			<div id="typo3-docheader-row2">
-				<div class="docheader-row2-left">
+			<div class="typo3-docheader-buttons">
+				<div class="left">
+					<f:render section="iconLeftButtons" />
 				</div>
-				<div class="docheader-row2-right">
-					<f:be.pagePath />
-					<f:be.pageInfo />
+				<div class="right">
+					<f:render section="iconRightButtons" />
 				</div>
 			</div>
 		</div>

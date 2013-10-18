@@ -225,9 +225,9 @@ class Session extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	}
 
 	/**
-	 * @param \Evoweb\Sessionplaner\Domain\Model\Room $room
+	 * @param integer|\Evoweb\Sessionplaner\Domain\Model\Room $room
 	 */
-	public function setRoom(\Evoweb\Sessionplaner\Domain\Model\Room $room) {
+	public function setRoom($room) {
 		$this->room = $room;
 	}
 
@@ -239,9 +239,9 @@ class Session extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	}
 
 	/**
-	 * @param \Evoweb\Sessionplaner\Domain\Model\Slot $slot
+	 * @param integer|\Evoweb\Sessionplaner\Domain\Model\Slot $slot
 	 */
-	public function setSlot(\Evoweb\Sessionplaner\Domain\Model\Slot $slot) {
+	public function setSlot($slot) {
 		$this->slot = $slot;
 	}
 

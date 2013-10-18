@@ -135,10 +135,13 @@ if (TYPO3_MODE === 'BE') {
 		),
 		array(
 			'access' => 'user,group',
-			'icon' => 'EXT:' . $_EXTKEY . '/Resources/Public/Icons/sessionplaner_module.gif',
+			'icon' => 'EXT:' . $_EXTKEY . '/Resources/Public/Icons/sessionplaner_module.png',
 			'labels' => 'LLL:EXT:' . $_EXTKEY . '/Resources/Private/Language/locallang_mod.xml',
 		)
 	);
+
+	$GLOBALS['TYPO3_CONF_VARS']['BE']['AJAX']['Sessionplaner'] =
+		'EXT:sessionplaner/Classes/Controller/AjaxController.php:&Evoweb\\Sessionplaner\\Controller\\AjaxController->dispatch';
 }
 
 

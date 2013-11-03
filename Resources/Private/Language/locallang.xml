@@ -23,6 +23,7 @@
 					Cookie gespeichert. Filter gehen nach einem Reload verloren.</label>
 			<label index="by">von</label>
 			<label index="sessionpool">Sessionpool</label>
+			<label index="minutes">min</label>
 
 			<label index="topic">Topic</label>
 			<label index="description">Description</label>

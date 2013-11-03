@@ -10,6 +10,7 @@
 <f:layout name="Backend" />
 
 <f:section name="iconFunctions">
+<f:if condition="{roomCount}">
 	<f:be.menus.actionMenu>
 		<f:for each="{days}" as="day">
 			<sp:be.menus.actionMenuItem
@@ -18,6 +19,7 @@
 				current="{currentDay.uid}" currentArgumentKey="day"/>
 		</f:for>
 	</f:be.menus.actionMenu>
+</f:if>
 </f:section>
 
 <f:section name="iconLeftButtons">
@@ -31,7 +33,7 @@
 </f:section>
 
 <f:section name="content">
-<f:if condition="{currentDay}">
+<f:if condition="{roomCount}">
 	<f:then>
 		<f:for each="{days}" as="day">
 			<f:if condition="{day} == {currentDay}">

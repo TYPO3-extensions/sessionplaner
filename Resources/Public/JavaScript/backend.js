@@ -20,8 +20,9 @@
 
 	var $newSession,
 		$editSession,
-		sessionData = {},
 		$stash,
+		$mask,
+		sessionData = {},
 		ajaxActive = false;
 
 	/**
@@ -185,7 +186,9 @@
 
 		if (!ajaxActive) {
 			ajaxActive = true;
-			$(this).addClass('sending');
+
+			$mask = $('<div class="t3-mask-loading"><div class="ext-el-mask"></div></div>');
+			$mask.appendTo(document.body);
 		} else {
 			result = false;
 		}
@@ -198,7 +201,10 @@
 	 */
 	function afterSend() {
 		ajaxActive = false;
-		$(this).removeClass('sending');
+
+		if (typeof($mask) === 'object') {
+			$mask.remove();
+		}
 	}
 
 

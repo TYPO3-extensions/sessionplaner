@@ -25,23 +25,39 @@ namespace Evoweb\Sessionplaner\Domain\Model;
 
 class Session extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	/**
+	 * @var boolean
+	 */
+	protected $hidden = false;
+
+	/**
+	 * @var boolean
+	 */
+	protected $suggestion = false;
+	
+	/**
+	 * @var boolean
+	 */
+	protected $social = true;
+	
+	/**
+	 * @var boolean
+	 */
+	protected $donotlink = false;
+
+	/**
 	 * @var string
 	 * @validate NotEmpty
-	 * @validate StringLength(minimum=1, maximum=255)
 	 */
 	protected $topic = '';
 
 	/**
 	 * @var string
-	 * @validate NotEmpty
-	 * @validate StringLength(minimum=1, maximum=4000)
 	 */
 	protected $description = '';
 
 	/**
 	 * @var string
 	 * @validate NotEmpty
-	 * @validate StringLength(minimum=1, maximum=255)
 	 */
 	protected $speaker = '';
 
@@ -66,9 +82,9 @@ class Session extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $level = 0;
 
 	/**
-	 * @var string
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
 	 */
-	protected $download = '';
+	protected $documents;
 
 	/**
 	 * @var \Evoweb\Sessionplaner\Domain\Model\Day
@@ -95,7 +111,64 @@ class Session extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Initialize day, room, slot and tags
 	 */
 	public function __construct() {
+		$this->documents = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 		$this->tags = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+	}
+
+	/**
+	 * @param boolean $hidden
+	 */
+	public function setHidden($hidden) {
+		$this->hidden = $hidden;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function getHidden() {
+		return $this->hidden;
+	}
+	
+	/**
+	 * @param boolean $social
+	 */
+	public function setSocial($social) {
+		$this->social = $social;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function getSocial() {
+		return $this->social;
+	}
+	
+	/**
+	 * @param boolean $donotlink
+	 */
+	public function setDonotlink($donotlink) {
+		$this->donotlink = $donotlink;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function getDonotlink() {
+		return $this->donotlink;
+	}
+
+	/**
+	 * @param boolean $suggestion
+	 */
+	public function setSuggestion($suggestion) {
+		$this->hidden = $suggestion;
+	}
+
+	/**
+	 * @return boolean
+	 */
+	public function getSuggestion() {
+		return $this->suggestion;
 	}
 
 	/**
@@ -197,17 +270,21 @@ class Session extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	}
 
 	/**
-	 * @param string $download
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $documents
 	 */
-	public function setDownload($download) {
-		$this->download = $download;
+	public function setDocuments(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $documents) {
+		$this->documents = $documents;
 	}
 
 	/**
-	 * @return string
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
 	 */
-	public function getDownload() {
-		return $this->download;
+	public function getDocuments() {
+	    $result = array();
+	    foreach($this->documents as $file) {
+		$result[] = $file->getOriginalResource();
+	    }
+	    return $result;
 	}
 
 	/**

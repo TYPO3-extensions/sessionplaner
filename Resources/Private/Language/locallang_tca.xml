@@ -25,6 +25,9 @@
 			<label index="tx_sessionplaner_domain_model_slot-days">Days</label>
 			<label index="tx_sessionplaner_domain_model_slot-rooms">Rooms</label>
 			<label index="tx_sessionplaner_domain_model_session">Session</label>
+			<label index="tx_sessionplaner_domain_model_session-suggestion">Suggestion</label>
+			<label index="tx_sessionplaner_domain_model_session-social">Social</label>
+			<label index="tx_sessionplaner_domain_model_session-donotlink">Do not link</label>
 			<label index="tx_sessionplaner_domain_model_session-topic">Topic</label>
 			<label index="tx_sessionplaner_domain_model_session-speaker">Speaker</label>
 			<label index="tx_sessionplaner_domain_model_session-twitter">Twitter</label>
@@ -37,6 +40,7 @@
 			<label index="tx_sessionplaner_domain_model_session-type-tutorial">Tutorial</label>
 			<label index="tx_sessionplaner_domain_model_session-type-workshop">Workshop</label>
 			<label index="tx_sessionplaner_domain_model_session-type-other">Other</label>
+			<label index="tx_sessionplaner_domain_model_session-type-wish">Wish</label>
 			<label index="tx_sessionplaner_domain_model_session-type-break">Break</label>
 			<label index="tx_sessionplaner_domain_model_session-level">Level</label>
 			<label index="tx_sessionplaner_domain_model_session-level-starter">Starter / Overview</label>

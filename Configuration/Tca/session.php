@@ -10,12 +10,41 @@ $GLOBALS['TCA']['tx_sessionplaner_domain_model_session'] = array(
 		'showRecordFieldList' => 'name'
 	),
 	'columns' => array(
+		'hidden' => array(
+			'exclude' => 1,
+			'label' => 'LLL:EXT:lang/locallang_general.xlf:LGL.hidden',
+			'config' => array(
+				'type' => 'check',
+			),
+		),
+		'suggestion' => array(
+			'exclude' => 1,
+			'label' => SP_LLL . 'tx_sessionplaner_domain_model_session-suggestion',
+			'config' => array(
+				'type' => 'check',
+			),
+		),
+		'social' => array(
+			'exclude' => 1,
+			'label' => SP_LLL . 'tx_sessionplaner_domain_model_session-social',
+			'config' => array(
+				'type' => 'check',
+				'default' => '1'
+			),
+		),
+		'donotlink' => array(
+			'exclude' => 1,
+			'label' => SP_LLL . 'tx_sessionplaner_domain_model_session-donotlink',
+			'config' => array(
+				'type' => 'check',
+			),
+		),
 		'topic' => array(
 			'exclude' => 0,
 			'label' => SP_LLL . 'tx_sessionplaner_domain_model_session-topic',
 			'config' => array(
 				'type' => 'input',
-				'size' => 20,
+				'size' => 40,
 				'eval' => 'trim,required',
 				'max' => 256,
 			),
@@ -25,7 +54,7 @@ $GLOBALS['TCA']['tx_sessionplaner_domain_model_session'] = array(
 			'label' => SP_LLL . 'tx_sessionplaner_domain_model_session-speaker',
 			'config' => array(
 				'type' => 'input',
-				'size' => 20,
+				'size' => 40,
 				'eval' => 'trim,required',
 				'max' => 256,
 			),
@@ -57,15 +86,46 @@ $GLOBALS['TCA']['tx_sessionplaner_domain_model_session'] = array(
 				'type' => 'text'
 			),
 		),
-		'download' => array(
+		'documents' => array(
 			'exclude' => 0,
 			'label' => SP_LLL . 'tx_sessionplaner_domain_model_session-download',
-			'config' => array(
-			'type' => 'input',
-				'size' => 20,
-				'eval' => 'trim',
-				'max' => 256,
-			),
+			'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('documents', array(
+			    'foreign_types' => array(
+				'0' => array(
+				    'showitem' => '
+					--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+					--palette--;;filePalette'
+				),
+				\TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => array(
+				    'showitem' => '
+					--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+					--palette--;;filePalette'
+				),
+				\TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => array(
+				    'showitem' => '
+					--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+					--palette--;;filePalette'
+				),
+				\TYPO3\CMS\Core\Resource\File::FILETYPE_AUDIO => array(
+				    'showitem' => '
+					--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+					--palette--;;filePalette'
+				),
+				\TYPO3\CMS\Core\Resource\File::FILETYPE_VIDEO => array(
+				    'showitem' => '
+					--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+					--palette--;;filePalette'
+				),
+				\TYPO3\CMS\Core\Resource\File::FILETYPE_APPLICATION => array(
+				    'showitem' => '
+					--palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+					--palette--;;filePalette'
+				),
+			    ),
+			    'minitems' => 0,
+			    'maxitems' => 100
+			)
+		    ),
 		),
 		'type' => array(
 			'exclude' => 0,
@@ -77,6 +137,7 @@ $GLOBALS['TCA']['tx_sessionplaner_domain_model_session'] = array(
 					array(SP_LLL . 'tx_sessionplaner_domain_model_session-type-talk', 1),
 					array(SP_LLL . 'tx_sessionplaner_domain_model_session-type-tutorial', 2),
 					array(SP_LLL . 'tx_sessionplaner_domain_model_session-type-workshop', 3),
+					array(SP_LLL . 'tx_sessionplaner_domain_model_session-type-wish', 6),
 					array(SP_LLL . 'tx_sessionplaner_domain_model_session-type-other', 4),
 					array(SP_LLL . 'tx_sessionplaner_domain_model_session-type-break', 5),
 				),
@@ -101,7 +162,7 @@ $GLOBALS['TCA']['tx_sessionplaner_domain_model_session'] = array(
 			'config' => array(
 				'type' => 'select',
 				'foreign_table' => 'tx_sessionplaner_domain_model_day',
-				'foreign_where' => 'pid = ###CURRENT_PID###',
+				'foreign_table_where' => 'AND tx_sessionplaner_domain_model_day.pid = ###CURRENT_PID###',
 				'size' => 1,
 				'minitems' => 0,
 				'maxitems' => 1,
@@ -123,7 +184,7 @@ $GLOBALS['TCA']['tx_sessionplaner_domain_model_session'] = array(
 			'config' => array(
 				'type' => 'select',
 				'foreign_table' => 'tx_sessionplaner_domain_model_room',
-				'foreign_where' => 'pid = ###CURRENT_PID###',
+				'foreign_table_where' => 'AND tx_sessionplaner_domain_model_room.pid = ###CURRENT_PID###',
 				'size' => 1,
 				'minitems' => 0,
 				'maxitems' => 1,
@@ -145,7 +206,7 @@ $GLOBALS['TCA']['tx_sessionplaner_domain_model_session'] = array(
 			'config' => array(
 				'type' => 'select',
 				'foreign_table' => 'tx_sessionplaner_domain_model_slot',
-				'foreign_where' => 'pid = ###CURRENT_PID###',
+				'foreign_table_where' => 'AND tx_sessionplaner_domain_model_slot.pid = ###CURRENT_PID###',
 				'size' => 1,
 				'minitems' => 0,
 				'maxitems' => 1,
@@ -170,7 +231,7 @@ $GLOBALS['TCA']['tx_sessionplaner_domain_model_session'] = array(
 				'allowed' => 'tx_sessionplaner_domain_model_tag',
 					// needed for extbase query
 				'foreign_table' => 'tx_sessionplaner_domain_model_tag',
-				'foreign_where' => 'pid = ###CURRENT_PID###',
+				'foreign_table_where' => 'AND tx_sessionplaner_domain_model_tag.pid = ###CURRENT_PID###',
 				'MM' => 'tx_sessionplaner_session_tag_mm',
 				'size' => 5,
 				'minitems' => 0,
@@ -184,9 +245,25 @@ $GLOBALS['TCA']['tx_sessionplaner_domain_model_session'] = array(
 		),
 	),
 	'types' => array(
-		'0' => array('showitem' => 'topic, speaker, twitter, attendees, download, description,
-		--div--; Relations, type, level, day, room, slot, tags')
+		'0' => array('showitem' => '
+			hidden;;1,
+			suggestion;;1,
+			social;;1,
+			donotlink;;1,
+			topic,
+			speaker,
+			twitter,
+			attendees,
+			documents,
+			description,
+			--div--;
+			Relations,
+			type,
+			level,
+			day,
+			room,
+			slot,
+			tags
+		')
 	),
 );
-
-?>

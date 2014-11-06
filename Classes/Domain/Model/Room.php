@@ -31,9 +31,9 @@ class Room extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $name = '';
 
 	/**
-	 * @var string
+	 * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
 	 */
-	protected $logo = '';
+	protected $logo;
 
 	/**
 	 * @var integer
@@ -82,14 +82,14 @@ class Room extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	}
 
 	/**
-	 * @param string $logo
+	 * @param  \TYPO3\CMS\Extbase\Domain\Model\FileReference $logo
 	 */
 	public function setLogo($logo) {
 		$this->logo = $logo;
 	}
 
 	/**
-	 * @return string
+	 * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $logo
 	 */
 	public function getLogo() {
 		return $this->logo;

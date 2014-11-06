@@ -8,8 +8,23 @@
 		<languageKey index="default" type="array">
 			<label index="tt_content.list_type_display">Sessionplan display</label>
 			<label index="tt_content.list_type_display_description">Show sessions</label>
-			<label index="tt_content.list_type_edit">Sessionplan edit/suggest</label>
-			<label index="tt_content.list_type_edit_description">Edit or suggest sessions</label>
+			<label index="tt_content.list_type_suggest">Sessionplaner: Suggest Session</label>
+			<label index="tt_content.list_type_suggest_description">Suggest a new session</label>
+			<label index="tt_content.list_type_session">Sessionplaner: Session</label>
+			<label index="tt_content.list_type_session_description">Session list and singleview</label>
+			<label index="tt_content.list_type_sessionplan">Sessionplaner: Sessionplan</label>
+			<label index="tt_content.list_type_sessionplan_description">Displays the sessionplan</label>
+
+			<label index="sessionplan_flexform.sheet_general">Common settings</label>
+			<label index="sessionplan_flexform.settings.day">Day</label>
+			<label index="sessionplan_flexform.settings.singlePid">Single Pid</label>
+			
+			<label index="session_flexform.sheet_general">Common settings</label>
+			<label index="session_flexform.settings.listViewHeadline">ListView Headline</label>
+			<label index="session_flexform.settings.listViewText">ListView Text</label>
+			<label index="session_flexform.settings.days">Days</label>
+			<label index="session_flexform.settings.suggestions">Suggestions</label>
+			<label index="session_flexform.settings.singlePid">Single Pid</label>
 
 			<label index="display_flexform.sheet_general">Common settings</label>
 			<label index="display_flexform.switchableControllerAction">Display</label>

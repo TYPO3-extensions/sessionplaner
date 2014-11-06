@@ -21,19 +21,48 @@ $GLOBALS['TCA']['tx_sessionplaner_domain_model_room'] = array(
 			),
 		),
 		'logo' => array(
-			'exclude' => 0,
-			'label' => SP_LLL . 'tx_sessionplaner_domain_model_room-logo',
-			'config' => array(
-				'type' => 'group',
-				'internal_type' => 'file',
-				'allowed' => $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext'],
-				'max_size' => $GLOBALS['TYPO3_CONF_VARS']['BE']['maxFileSize'],
-				'uploadfolder' => 'uploads/tx_sessionplaner',
-				'show_thumbs' => 1,
-				'size' => 1,
-				'minitems' => 0,
-				'maxitems' => 1,
+		    'exclude' => 0,
+		    'label' => SP_LLL . 'tx_sessionplaner_domain_model_room-logo',
+		    'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('logo', array(
+			'appearance' => array(
+			    'createNewRelationLinkTitle' => 'LLL:EXT:cms/locallang_ttc.xlf:images.addFileReference',
 			),
+			'foreign_types' => array(
+			    '0' => array(
+				'showitem' => '
+				    --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+				    --palette--;;filePalette'
+			    ),
+			    \TYPO3\CMS\Core\Resource\File::FILETYPE_TEXT => array(
+				'showitem' => '
+				    --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+				    --palette--;;filePalette'
+			    ),
+			    \TYPO3\CMS\Core\Resource\File::FILETYPE_IMAGE => array(
+				'showitem' => '
+				    --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+				    --palette--;;filePalette'
+			    ),
+			    \TYPO3\CMS\Core\Resource\File::FILETYPE_AUDIO => array(
+				'showitem' => '
+				    --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+				    --palette--;;filePalette'
+			    ),
+			    \TYPO3\CMS\Core\Resource\File::FILETYPE_VIDEO => array(
+				'showitem' => '
+				    --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+				    --palette--;;filePalette'
+			    ),
+			    \TYPO3\CMS\Core\Resource\File::FILETYPE_APPLICATION => array(
+				'showitem' => '
+				    --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageoverlayPalette,
+				    --palette--;;filePalette'
+			    ),
+			),
+			'minitems' => 0,
+			'maxitems' => 1,
+		    ),
+		    $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']),
 		),
 		'seats' => array(
 			'exclude' => 0,
@@ -51,7 +80,7 @@ $GLOBALS['TCA']['tx_sessionplaner_domain_model_room'] = array(
 			'config' => array(
 				'type' => 'select',
 				'foreign_table' => 'tx_sessionplaner_domain_model_day',
-				'foreign_where' => 'pid = ###CURRENT_PID### ORDER BY tx_sessionplaner_domain_model_day.name',
+				'foreign_table_where' => 'AND tx_sessionplaner_domain_model_day.pid = ###CURRENT_PID### ORDER BY tx_sessionplaner_domain_model_day.name',
 				'MM' => 'tx_sessionplaner_day_room_mm',
 				'MM_opposite_field' => 'rooms',
 				'size' => 5,
@@ -65,7 +94,7 @@ $GLOBALS['TCA']['tx_sessionplaner_domain_model_room'] = array(
 			'config' => array(
 				'type' => 'select',
 				'foreign_table' => 'tx_sessionplaner_domain_model_slot',
-				'foreign_where' => 'pid = ###CURRENT_PID###',
+				'foreign_table_where' => 'AND tx_sessionplaner_domain_model_slot.pid = ###CURRENT_PID### ORDER BY tx_sessionplaner_domain_model_slot.start',
 				'MM' => 'tx_sessionplaner_room_slot_mm',
 				'size' => 10,
 				'minitems' => 0,
@@ -79,7 +108,7 @@ $GLOBALS['TCA']['tx_sessionplaner_domain_model_room'] = array(
 			'config' => array(
 				'type' => 'select',
 				'foreign_table' => 'tx_sessionplaner_domain_model_session',
-				'foreign_where' => 'roomt = ###CURRENT_PID###',
+				'foreign_table_where' => 'AND tx_sessionplaner_domain_model_session.pid = ###CURRENT_PID###',
 				'foreign_field' => 'room',
 				'size' => 5,
 				'autoSizeMax' => 20,
@@ -87,8 +116,13 @@ $GLOBALS['TCA']['tx_sessionplaner_domain_model_room'] = array(
 		),
 	),
 	'types' => array(
-		'0' => array('showitem' => 'name, logo, seats, days, slots, sessions')
+		'0' => array('showitem' => '
+            name,
+            logo,
+            seats,
+            days,
+            slots,
+            sessions
+        ')
 	),
 );
-
-?>

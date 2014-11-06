@@ -10,4 +10,7 @@ plugin.tx_sessionplaner {
 	features {
 		skipDefaultArguments = 1
 	}
+	settings {
+	    cssFile = {$plugin.tx_sessionplaner.settings.cssFile}
+	}
 }

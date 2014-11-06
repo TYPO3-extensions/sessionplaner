@@ -11,4 +11,7 @@ plugin.tx_sessionplaner {
 		# cat=plugin.sessionplaner//a; type=string; label=Default storage PID
 		storagePid =
 	}
+	settings {
+	    cssFile = typo3conf/ext/sessionplaner/Resources/Public/Stylesheets/frontend.css
+	}
 }

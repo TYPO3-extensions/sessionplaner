@@ -11,8 +11,7 @@
 				Please create days, rooms and slots previous planing sessions.<br/>
 				For further information consulte the documentation.]]></label>
 			<label index="session-new">Add new session</label>
-
-
+			
 			<label index="filter-tags">Tags</label>
 			<label index="filter-user">Users</label>
 			<label index="filter-user">Sessiontyp</label>
@@ -23,7 +22,8 @@
 					Cookie gespeichert. Filter gehen nach einem Reload verloren.</label>
 			<label index="by">von</label>
 			<label index="sessionpool">Sessionpool</label>
-			<label index="minutes">min</label>
+			
+			<label index="filter-tags">Tags</label>
 
 			<label index="topic">Topic</label>
 			<label index="description">Description</label>
@@ -35,6 +35,7 @@
 			<label index="type-tutorial">Tutorial</label>
 			<label index="type-workshop">Workshop</label>
 			<label index="type-other">Other</label>
+			<label index="type-wish">Wish</label>
 			<label index="type-break">Break</label>
 			<label index="level">Level</label>
 			<label index="level-starter">Starter / Overview</label>
@@ -47,6 +48,8 @@
 
 			<label index="yourSessionIsSaved">Thank you for your suggestion. It will be available online after it was reviewed.</label>
 			<label index="field_1221560718">The field %s may not be empty</label>
+			
+			<label index="warning-nosessionsfound">No Sessions found.</label>
 		</languageKey>
 		<languageKey index="de" type="array">
 			<label index="topic">Thema</label>
@@ -58,11 +61,12 @@
 			<label index="type-tutorial">Tutorial</label>
 			<label index="type-workshop">Workshop</label>
 			<label index="type-other">Sonstiges</label>
+			<label index="type-wish">Wunsch</label>
 			<label index="type-break">Pause</label>
 			<label index="level">Level</label>
 			<label index="level-starter">Anfänger / erste Einblicke</label>
-			<label index="level-advanced">Vorgeschrittene / Grundkenntnisse</label>
-			<label index="level-pro">Profis / Detaliert</label>
+			<label index="level-advanced">Fortgeschrittene / Grundkenntnisse</label>
+			<label index="level-pro">Profis / Detailliert</label>
 			<label index="tags">Tags</label>
 			<label index="suggest">Vorschlag abschicken</label>
 			<label index="mandatory">Pflichtfelder sind mit einem * markiert</label>
@@ -70,6 +74,8 @@
 
 			<label index="yourSessionIsSaved">Vielen Danke für Deinen Vorschlag. Er wird online verfügbar nachdem er überprüft wurde.</label>
 			<label index="field_1221560718">Das Feld %s darf nicht leer sein</label>
+			
+			<label index="warning-nosessionsfound">Es wurden keine Sessions gefunden.</label>
 		</languageKey>
 	</data>
 </T3locallang>

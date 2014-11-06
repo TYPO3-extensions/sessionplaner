@@ -28,7 +28,7 @@ $GLOBALS['TCA']['tx_sessionplaner_domain_model_tag'] = array(
 				'allowed' => 'tx_sessionplaner_domain_model_tag',
 					// needed for extbase query
 				'foreign_table' => 'tx_sessionplaner_domain_model_tag',
-				'foreign_where' => 'pid = ###CURRENT_PID###',
+				'foreign_table_where' => 'AND tx_sessionplaner_domain_model_tag.pid = ###CURRENT_PID###',
 				'MM' => 'tx_sessionplaner_session_tag_mm',
 				'MM_opposite_field' => 'sessions',
 				'size' => 5,
@@ -43,8 +43,9 @@ $GLOBALS['TCA']['tx_sessionplaner_domain_model_tag'] = array(
 		),
 	),
 	'types' => array(
-		'0' => array('showitem' => 'label, sessions')
+		'0' => array('showitem' => '
+            label,
+            sessions
+        ')
 	),
 );
-
-?>
